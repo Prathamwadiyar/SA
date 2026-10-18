@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowDownRight, ArrowUpRight, ArrowRight } from "lucide-react";
+import { ArrowDownRight, ArrowUpRight } from "lucide-react";
 import { getPublishedProjects } from "@/lib/projects";
 import { ExpertiseInteractive } from "./services-interactive";
 
