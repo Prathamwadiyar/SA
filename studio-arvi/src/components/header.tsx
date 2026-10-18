@@ -16,19 +16,20 @@ export function Header(){
  },[open]);
  useEffect(()=>{
   const apply=()=>{const mid=100;const els=Array.from(document.querySelectorAll<HTMLElement>("[data-header-theme]"));
-    const active=els.filter(el=>{let r=el.getBoundingClientRect();return r.top<=mid && r.bottom>mid}).pop();
+    const active=els.filter(el=>{const r=el.getBoundingClientRect();return r.top<=mid && r.bottom>mid}).pop();
     setTheme(active?.dataset.headerTheme==="light"?"light":"dark");};
   apply();window.addEventListener("scroll",apply,{passive:true});window.addEventListener("resize",apply);return()=>{window.removeEventListener("scroll",apply);window.removeEventListener("resize",apply)}
  },[pathname]);
  useEffect(()=>{
   if(!open)return;
+  const focusReturnTarget=openRef.current;
   const prevOverflow=document.body.style.overflow;document.body.style.overflow="hidden";closeRef.current?.focus();
   const key=(e:KeyboardEvent)=>{if(e.key==="Escape")setOpen(false);if(e.key==="Tab"){
    const region=document.getElementById("mobile-nav-panel");const focusables=Array.from(region?.querySelectorAll<HTMLElement>('a,button:not([disabled])')||[]);
    const first=focusables[0],last=focusables[focusables.length-1];if(!first||!last)return;
    if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}
   }};
-  document.addEventListener("keydown",key);return()=>{document.body.style.overflow=prevOverflow;document.removeEventListener("keydown",key);openRef.current?.focus()};
+  document.addEventListener("keydown",key);return()=>{document.body.style.overflow=prevOverflow;document.removeEventListener("keydown",key);focusReturnTarget?.focus()};
  },[open]);
  return <>
    <header className={`site-header ${theme==="light"?"header-on-light":"header-on-dark"} ${hidden&&!open?"header-hidden":""} ${open?"menu-is-open":""}`}>
