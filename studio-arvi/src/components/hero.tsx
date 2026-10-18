@@ -23,14 +23,14 @@ export function Hero(){
   const media=gsap.matchMedia();
   media.add("(min-width: 1024px) and (pointer: fine) and (prefers-reduced-motion: no-preference)",()=>{
    const master=gsap.timeline({scrollTrigger:{trigger:scope.current,pin:scope.current?.querySelector(".hero-pin") || undefined,start:"top top",end:"+=185%",scrub:1,anticipatePin:1,invalidateOnRefresh:true}});
-   master.to({}, {duration:.2})
-     .to(cards,{xPercent:(i:number)=>[-48,-12,18,45][i],yPercent:(i:number)=>[24,-26,-22,25][i],rotation:(i:number)=>[-19,-7,8,19][i],scale:(i:number)=>[.88,1.07,1.08,.9][i],duration:.24,ease:"none"},.2)
-     .to(cards,{xPercent:(i:number)=>[132,48,-48,-135][i],yPercent:(i:number)=>[9,5,5,9][i],rotation:0,scale:(i:number)=>[.8,.93,.93,1.03][i],duration:.26,ease:"power2.inOut"},.44)
-     .to(cards.slice(0,3),{autoAlpha:0,scale:.8,duration:.12},.64)
-     .to(cards[3],{xPercent:-145,yPercent:-18,scale:4.7,rotation:0,duration:.22,ease:"power2.inOut"},.69)
-     .to(".hero-copy",{autoAlpha:0,yPercent:-18,duration:.14},.73)
-     .to(".hero-wash",{autoAlpha:1,duration:.12,ease:"none"},.86)
-     .to({}, {duration:.02});
+   master.to({}, {duration:.28})
+     .to(cards,{xPercent:(i:number)=>[-48,-12,18,45][i],yPercent:(i:number)=>[24,-26,-22,25][i],rotation:(i:number)=>[-19,-7,8,19][i],scale:(i:number)=>[.88,1.07,1.08,.9][i],duration:.3,ease:"power1.inOut"},.28)
+     .to(cards,{xPercent:(i:number)=>[132,48,-48,-135][i],yPercent:(i:number)=>[9,5,5,9][i],rotation:0,scale:(i:number)=>[.8,.93,.93,1.03][i],duration:.3,ease:"power2.inOut"},.55)
+     .to(cards.slice(0,3),{autoAlpha:0,scale:.8,duration:.18},.78)
+     .to(cards[3],{xPercent:-145,yPercent:-18,scale:4.7,rotation:0,duration:.32,ease:"power2.inOut"},.81)
+     .to(".hero-copy",{autoAlpha:0,yPercent:-18,duration:.24},.82)
+     .to(".hero-wash",{autoAlpha:1,duration:.24,ease:"power1.inOut"},.99)
+     .to({}, {duration:.16});
    return ()=>master.scrollTrigger?.kill();
   });
   return ()=>media.revert();
