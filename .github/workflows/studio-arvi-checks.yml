@@ -1,0 +1,37 @@
+name: Studio Arvi checks
+
+on:
+  push:
+    branches:
+      - studio-arvi-chatgpt-development
+  pull_request:
+    paths:
+      - "studio-arvi/**"
+      - ".github/workflows/studio-arvi-checks.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: studio-arvi
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: studio-arvi/package-lock.json
+      - name: Install locked dependencies
+        run: npm ci
+      - name: TypeScript check
+        run: npm run typecheck
+      - name: ESLint check
+        run: npm run lint
+      - name: Production build
+        run: npm run build
