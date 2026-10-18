@@ -1,0 +1,11 @@
+"use client";
+import { useState } from "react";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+const items=[
+ {title:"Web Design & Development",tag:"DIGITAL FOUNDATIONS",description:"Distinctive responsive websites built with clarity, performance and character.",preview:"Digital presence, thoughtfully built.",number:"01"},
+ {title:"Creative Digital Experiences",tag:"MOTION & INTERACTION",description:"Scroll storytelling and intentional interactions that make brands more memorable.",preview:"An experience worth exploring.",number:"02"},
+ {title:"Brand Identity & Creative Direction",tag:"VISUAL SYSTEMS",description:"Coherent typography, digital identity and art direction that bring an idea into focus.",preview:"Form follows feeling.",number:"03"},
+ {title:"Website Optimization & Evolution",tag:"LONG-TERM THINKING",description:"Practical refinement of speed, usability and ongoing digital experiences.",preview:"Designed to keep evolving.",number:"04"},
+];
+export function ExpertiseInteractive(){const [active,setActive]=useState(0);return <div className="expertise-interactive"><div className="services-list">{items.map((x,i)=><div className={`service-item ${active===i?"service-active":""}`} key={x.number}><button type="button" onMouseEnter={()=>setActive(i)} onFocus={()=>setActive(i)} onClick={()=>setActive(i)} aria-expanded={active===i} aria-controls="service-detail"><span className="service-number">{x.number}</span><span className="service-title">{x.title}</span><ArrowUpRight size={21}/></button>{active===i&&<p className="service-mobile-description">{x.description}</p>}</div>)}</div><div className="expertise-preview" id="service-detail" aria-live="polite" aria-atomic="true"><div className="preview-bar"><span>{items[active].tag}</span><span>0{active+1} / 04</span></div><div className={`preview-art preview-art-${active}`}><div className="preview-interface"><div className="preview-nav"><span>studio arvi.</span><span>↗</span></div><div className="preview-content"><p>{items[active].tag}</p><h3>{items[active].preview}</h3><div className="preview-decor"/></div></div></div><p>{items[active].description}</p><Link href="/expertise" className="text-link muted">Explore expertise <ArrowUpRight size={16}/></Link></div></div>}

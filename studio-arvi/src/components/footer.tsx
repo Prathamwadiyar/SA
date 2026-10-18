@@ -1,0 +1,4 @@
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import { Brand } from "./brand";
+export function Footer(){return <footer className="site-footer theme-dark" data-header-theme="dark"><div className="container-wide"><div className="footer-top"><span className="eyebrow">STUDIO ARVI / INDEPENDENT CREATIVE STUDIO</span><a href="#main" className="text-link muted">Back to top ↑</a></div><div className="footer-middle"><Brand light/><p>Design that stays with you.</p></div><div className="footer-bottom"><span>© {new Date().getFullYear()} STUDIO ARVI</span><nav aria-label="Footer navigation"><Link href="/work">Work</Link><Link href="/expertise">Expertise</Link><Link href="/studio">Studio</Link><Link href="/contact">Contact</Link><Link href="/privacy">Privacy</Link></nav><Link href="/contact" aria-label="Start a project"><ArrowUpRight size={20}/></Link></div></div></footer>}
