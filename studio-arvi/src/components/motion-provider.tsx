@@ -18,7 +18,7 @@ export function MotionProvider(){
    if(!reduced.matches && fine.matches){
     lenis=new Lenis({duration:1.15,smoothWheel:true, syncTouch:false});
     lenis.on("scroll", ()=>ScrollTrigger.update());
-    gsap.ticker.add(tick);gsap.ticker.lagSmoothing(0);
+    gsap.ticker.add(tick);
    }
    if(!reduced.matches){
     ctx=gsap.context(()=>{
