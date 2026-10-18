@@ -1,0 +1,8 @@
+import type { Metadata } from "next";
+import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
+import { PageIntro, SectionLabel } from "@/components/sections";
+import { WorkGrid } from "@/components/work";
+import { getPublishedProjects } from "@/lib/projects";
+export const metadata:Metadata={title:"Work — Curated Design Explorations",description:"Explore Studio Arvi's independent digital and editorial concept studies, created with intention."};
+export default function Work(){const projects=getPublishedProjects();return <main id="main" className="theme-dark" data-header-theme="dark"><PageIntro eyebrow="WORK / A CURATED ARCHIVE" headline="Work that" italic="speaks." description="A curated collection of digital explorations where creative thinking meets the craft of interface design."/><section className="work-page section"><div className="container-wide"><div className="archive-head"><SectionLabel index="01" label="selected explorations"/><p>{String(projects.length).padStart(2,"0")} PUBLISHED STUDIES</p></div><WorkGrid projects={projects}/></div></section><section className="archive-outro section theme-light" data-header-theme="light"><div className="container-wide"><p className="eyebrow">BEYOND THE FRAME</p><h2 className="display" data-reveal>It's not just<br/>how it looks.<br/><em>It's how it feels.</em></h2><div className="outro-line"><p>Every published study above is a self-initiated exploration, clearly distinguished from commissioned client work.</p><Link href="/contact" className="text-link">Let's create together <ArrowUpRight size={18}/></Link></div></div></section></main>}

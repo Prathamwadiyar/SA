@@ -1,0 +1,2 @@
+import Link from "next/link";
+export default function NotFound(){return <main id="main" className="page-shell theme-light" data-header-theme="light"><div className="container notfound"><p className="eyebrow">404 / PAGE NOT FOUND</p><h1 className="display">Nothing here, <em>yet.</em></h1><p>That address doesn't lead to a published page.</p><Link className="text-link" href="/">Return home ↗</Link></div></main>}
